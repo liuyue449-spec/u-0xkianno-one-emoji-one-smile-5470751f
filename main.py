@@ -26,7 +26,11 @@ import sys
 # U+1F604 GRINNING FACE WITH SMILING EYES — the whole entry.
 ENTRY = "\U0001F604"
 
-OUTPUT_PATH = "/output/entry.txt"
+# Output directory: MAKEFUN_OUTPUT_DIR overrides the default /output
+# (other make.fun entries use the same convention); the entry file name
+# itself never changes.
+OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, "entry.txt")
 
 
 def check_entry(text: str) -> bytes:
